@@ -1,0 +1,17 @@
+extends ../base/layout
+
+block variables
+  - const title = "LH index page"
+  //- - const wrapperMods = "modal-open"
+  - const wrapperMods = ""
+  - const hasHeader = true
+  - const headerMods = ""
+  - const hasFooter = true
+  - const footerMods = ""
+  - const currentPage = 0
+
+block main
+  main.main
+    section
+      .container
+        h2(style="padding: 2rem 0") title for section

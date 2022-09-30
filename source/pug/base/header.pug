@@ -1,0 +1,106 @@
+mixin header(headerMods, currentPage)
+  -
+    var navLinks = [
+      {
+        href: "",
+        text: "Каталог инструментов",
+      },
+      {
+        href: "#",
+        text: "Все для сада"
+      },
+      {
+        href: "#",
+        text: "Ручной интрумент"
+      },
+      {
+        href: "#",
+        text: "Электрика",
+      },
+      {
+        href: "#",
+        text: "Доставка",
+      },
+      {
+        href: "#",
+        text: "Оплата",
+      },
+      {
+        href: "#",
+        text: "О нас",
+      },
+    ]
+    var products = [1,2,3]
+
+    var searchLink = ["Дрели","Шлифмашины","Пистолеты","Электропилы","Наборы инструментов","Акксесуары"]
+
+  header.header(class=headerMods)
+    .header__wrapper.container
+      //- main top part
+      .header__top
+        //- logo block
+        a(href="#").header__logo-wrap
+          +icon('icon-logo', 95, 95)
+          p магазин инструмента
+        button(type="button" aria-hidden="false" aria-expanded="false" aria-label="open/close menu").header__menu-button.menu-button
+          span.menu-button__icon
+        //- nav block
+        nav.header__nav.nav
+
+          ul.nav__wrapper
+            each link, index in navLinks
+              li.nav__item
+                if(currentPage === index)
+                  a(href="#").nav__item-link.nav__item-link--active=link.text
+                else
+                  a.nav__item-link.nav__item-link(href=link.href)=link.text
+          //- login block
+          .nav__actions.nav-actions
+            a(href="#").nav-actions__link Вход
+            a(href="#").nav-actions__link Регистрация
+        //- header info block
+        .header__main-info.header-main-info
+          a(href="#" aria-label="link to somewhere").header-main-info__banner
+            //- img(src="https://via.placeholder.com/250x70" width="253" height="70" alt="space for banner")
+          .header-main-info__header-cart.header-cart
+            .header-cart__data-links
+              a(href="#").header-cart__cart-link.header-cart__cart-link--cart.main-icon-link
+                .main-icon-link__icon-wrap
+                  +icon('icon-cart', 19, 18)
+                span 3 шт. / 17 250 р.
+              a(href="#").header-cart__cart-link.main-icon-link
+                .main-icon-link__icon-wrap
+                  +icon('icon-star', 14, 14)
+                span Избранное (7)
+              a(href="#").header-cart__cart-link.main-icon-link
+                .main-icon-link__icon-wrap
+                  +icon('icon-balance', 18, 16)
+                span К сравнению (5)
+            //- cart product list
+            ul.header-cart__product-list
+              each product in products
+                li.header-cart__product-list-item
+                  a(href="#")
+                    +img('products', `img-good-${product}`, 'png', 70, 70, `product ${product}`)
+          //- header info time tel block
+          .header-main-info__header-additional-info.header-additional-info
+            .header-additional-info__time
+              p
+                b Время работы:
+              p.header-additional-info__time-value 10:00 — 19:00
+            a(href="tel:+74957212525").header-additional-info__tel-link 8 495 721-25-25
+            .header-additional-info__region.header-region
+              p.header-region__current Москва
+              a(href="#").header-region__change-link
+                span сменить
+
+      .header__search-nav.header-search-nav
+        .header-search-nav__icon-search
+          +icon('icon-search', 24, 24)
+        ul.header-search-nav__list
+          li.header-search-nav__list-item
+            a(href="#").header-search-nav__link.is-active Перфораторы
+          each link in searchLink
+            li.header-search-nav__list-item
+              a(href="#").header-search-nav__link= link
+        a(href="#").header-search-nav__special-link Распродажа

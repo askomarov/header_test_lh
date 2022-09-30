@@ -1,0 +1,10 @@
+.footer {
+  background-color: $text-color;
+  color: $color-white;
+  min-height: 150px;
+  padding: 1rem 1.5rem;
+
+  @media (min-width: $width-tablet) {
+    min-height: 312px;
+  }
+}
